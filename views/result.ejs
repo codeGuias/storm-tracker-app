@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storm Tracker Results</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Storm Tracker for <%= country %></h1>
+
+        <% if (lat && lon) { %>
+            <h2>Location: <%= locationData.name %> (<%= lat %>, <%= lon %>)</h2>
+            
+            <h2>Windy Map:</h2>
+            <!-- Embed the Windy.com map centered at the geocoded coordinates -->
+            <iframe
+                width="2000"
+                height="1000"
+                src="https://embed.windy.com/embed2.html?lat=<%= lat %>&lon=<%= lon %>&zoom=5&level=surface&overlay=wind&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=&detailLon=&metricWind=default&metricTemp=default&radarRange=-1"
+                frameborder="0">
+            </iframe>
+        <% } else { %>
+            <p><%= error %></p>
+        <% } %>
+
+        <br><br>
+        <a href="/">Search again</a>
+    </div>
+</body>
+</html>
